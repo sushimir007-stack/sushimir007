@@ -1,19 +1,10 @@
 const ADMIN_PASSWORD = "adminadmin123mir.com"; // Демо-пароль.
 
-// НАЛАШТУВАННЯ TELEGRAM БОТА
-const BOT_TOKEN = "9060471473:AAGYF4CEJ08vbhphcpv_ql0uSuIyLsfC7o0";
-const CHAT_ID = "6479805543"; // Сюди впишіть числовий ID чату або групи (наприклад, 123456789 або -100...)
 
-const DEFAULT_PRODUCTS = [
- {id:"p1",name:"Філадельфія класік",category:"Роли",description:"Лосось, вершковий сир, огірок та ніжний рис.",weight:280,price:300,image:""},
- {id:"p2",name:"Каліфорнія з лососем",category:"Роли",description:"Лосось, авокадо, огірок та ікра тобіко.",weight:260,price:270,image:""},
- {id:"p3",name:"Запечений рол",category:"Роли",description:"Теплий рол із сирною шапочкою та соусом.",weight:300,price:290,image:""},
- {id:"p4",name:"Сет Момент",category:"Сети",description:"Улюблені роли для затишного вечора вдвох.",weight:850,price:790,image:""},
- {id:"p5",name:"Сет Sushi Mir",category:"Сети",description:"Різноманіття смаків для компанії друзів.",weight:1200,price:1090,image:""},
- {id:"p6",name:"Нігірі з лососем",category:"Суші",description:"Рис та скибочка свіжого лосося.",weight:70,price:95,image:""},
- {id:"p7",name:"Матча лимонад",category:"Напої",description:"Освіжаючий лимонад із легкою ноткою матча.",weight:330,price:85,image:""},
- {id:"p8",name:"Імбирний чай",category:"Напої",description:"Ароматний чай з імбиром та цитрусом.",weight:400,price:75,image:""}
-];
+const BOT_TOKEN = "9151681389:AAFB5Nyocmfg2iGUD1VN8MdlDNzlHw3DKLY";
+const CHAT_ID = "9071336976"; 
+
+const DEFAULT_PRODUCTS = [];
 
 const $ = s => document.querySelector(s);
 const money = n => `${Number(n).toLocaleString("uk-UA")} грн`;
@@ -167,7 +158,7 @@ $("#adminPassword").addEventListener("keydown",e=>{if(e.key==="Enter")$("#loginA
 
 function renderAdmin(){$("#adminProducts").innerHTML=products.map(p=>`<div class="admin-product"><span><b>${safe(p.name)}</b> · ${money(p.price)}</span><span><button data-edit="${safe(p.id)}">Редагувати</button> <button class="delete" data-delete="${safe(p.id)}">Видалити</button></span></div>`).join("")||"<p class='tiny-note'>Каталог порожній.</p>"}
 
-$("#productForm").addEventListener("submit",async e=>{e.preventDefault();const f=new FormData(e.currentTarget),id=f.get("id")||"p"+Date.now(),p={id,name:f.get("name").trim(),category:f.get("category"),description:f.get("description").trim(),price:Number(f.get("price")),weight:Number(f.get("weight")),image:window._selectedProductImage || (products.find(x=>x.id===id)?.image || DEFAULT_PRODUCTS[0].image)};if(!p.price||!p.weight)return toast("Вкажіть коректні ціну та вагу");const previous=structuredClone(products);const index=products.findIndex(x=>x.id===id);if(index>=0)products[index]=p;else products.push(p);if(await saveProducts()){renderCategories();renderProducts();renderAdmin();e.currentTarget.reset();window._selectedProductImage="";$("#imagePreview").hidden=true;toast("Товар збережено для всіх клієнтів")}else products=previous});
+$("#productForm").addEventListener("submit",async e=>{e.preventDefault();const f=new FormData(e.currentTarget),id=f.get("id")||"p"+Date.now(),p={id,name:f.get("name").trim(),category:f.get("category"),description:f.get("description").trim(),price:Number(f.get("price")),weight:Number(f.get("weight")),image:window._selectedProductImage || (products.find(x=>x.id===id)?.image || "")};if(!p.price||!p.weight)return toast("Вкажіть коректні ціну та вагу");const previous=structuredClone(products);const index=products.findIndex(x=>x.id===id);if(index>=0)products[index]=p;else products.push(p);if(await saveProducts()){renderCategories();renderProducts();renderAdmin();e.currentTarget.reset();window._selectedProductImage="";$("#imagePreview").hidden=true;toast("Товар збережено для всіх клієнтів")}else products=previous});
 
 $("#adminProducts").addEventListener("click",async e=>{const edit=e.target.closest("[data-edit]");if(edit){const p=products.find(x=>x.id===edit.dataset.edit),form=$("#productForm");Object.entries(p).forEach(([k,v])=>{if(form.elements[k])form.elements[k].value=v});form.scrollIntoView({behavior:"smooth",block:"center"})}const del=e.target.closest("[data-delete]");if(del&&confirm("Видалити цей товар для всіх клієнтів?")){const previous=structuredClone(products);products=products.filter(p=>p.id!==del.dataset.delete);delete cart[del.dataset.delete];if(await saveProducts()){saveCart();renderCategories();renderProducts();renderCart();renderAdmin();toast("Товар видалено для всіх клієнтів")}else products=previous}});
 
@@ -183,7 +174,7 @@ $("#productImageFile").addEventListener("change", async e=>{
  }catch(err){console.error(err);toast("Не вдалося прочитати фото")}
 });
 $("#resetProductForm").onclick=()=>{$("#productForm").reset();window._selectedProductImage="";$("#imagePreview").hidden=true};
-$("#resetProducts").onclick=async()=>{if(confirm("Відновити стандартний каталог для всіх клієнтів?")){const previous=structuredClone(products);products=structuredClone(DEFAULT_PRODUCTS);if(await saveProducts()){renderCategories();renderProducts();renderAdmin();toast("Каталог відновлено")}else products=previous}};
+$("#resetProducts").onclick=async()=>{if(confirm("Очистити каталог для всіх клієнтів?")){const previous=structuredClone(products);products=structuredClone(DEFAULT_PRODUCTS);if(await saveProducts()){renderCategories();renderProducts();renderAdmin();toast("Каталог очищено")}else products=previous}};
 $("#clearProducts").onclick=async()=>{if(confirm("Видалити всі товари для всіх клієнтів?")){const previous=structuredClone(products);products=[];if(await saveProducts()){cart={};saveCart();renderCategories();renderProducts();renderCart();renderAdmin();toast("Каталог очищено для всіх клієнтів")}else products=previous}};
 $("#logoutAdmin").onclick=()=>{$("#adminPanel").hidden=true;$("#adminLogin").hidden=false;$("#adminPassword").value="";adminPasswordForApi=""};
 

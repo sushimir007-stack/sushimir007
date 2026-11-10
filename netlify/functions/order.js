@@ -57,6 +57,7 @@ exports.handler = async (event) => {
     text += `📞 <b>Телефон:</b> ${String(order.phone).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]))}\n`;
     text += `💬 <b>Telegram:</b> ${String(order.telegram || 'Не вказано').replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]))}\n`;
     text += `📍 <b>Спосіб:</b> ${String(order.fulfillment || 'Не вказано').replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]))}\n`;
+    text += `🕒 <b>Час:</b> ${String(order.orderTime || "Якомога швидше").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]))}\n`;
     text += `📝 <b>Коментар:</b> ${String(order.comment || 'Немає').replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]))}\n\n`;
     text += `🛒 <b>Склад замовлення:</b>\n`;
     
