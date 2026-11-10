@@ -1,32 +1,18 @@
 const ADMIN_PASSWORD = "adminadmin123mir.com"; // Демо-пароль.
 
 // НАЛАШТУВАННЯ TELEGRAM БОТА
-const BOT_TOKEN = "9151681389:AAFB5Nyocmfg2iGUD1VN8MdlDNzlHw3DKLY";
-const CHAT_ID = "9071336976"; // Сюди впишіть числовий ID чату або групи (наприклад, 123456789 або -100...)
+const BOT_TOKEN = "9060471473:AAGYF4CEJ08vbhphcpv_ql0uSuIyLsfC7o0";
+const CHAT_ID = "6479805543"; // Сюди впишіть числовий ID чату або групи (наприклад, 123456789 або -100...)
 
 const DEFAULT_PRODUCTS = [
- {id:"p1",name:"Філадельфія з лососем",category:"Роли",description:"Норі, Рис, Крем сир, Огірок, Лосось",weight:280,price:300,image:""},
- {id:"p2",name:"Філадельфія з вугрем",category:"Роли",description:"Норі, Рис, Крем сир, Огірок, Вугор, Унагі",weight:260,price:270,image:""},
- {id:"p3",name:"Філадельфія мікс",category:"Роли",description:"Норі, Рис, Крем сир, Огірок, Лосось, Вугор, Унагі",weight:300,price:290,image:""},
- {id:"p3",name:"Філадельфія класік ",category:"Роли",description:"Норі, Рис, Крем сир, Лосось, Кунжут, Унагі",weight:300,price:290,image:""},
- {id:"p3",name:"Червоний дракон",category:"Роли",description:"Норі, Рис, Крем сир, Ікра тобіко червона, Огірок, Лосось, Майонез",weight:300,price:290,image:""},
- {id:"p3",name:"Вогняний дракон ",category:"Роли",description:"Норі, Рис, Крем сир, Ікра тобіко червона, Огірок, Лосось, Унагі",weight:300,price:290,image:""},
- {id:"p3",name:"Золотий дракон",category:"Роли",description:"Норі, Рис, Крем сир, Огірок, Ікра тобіко чорна, Вугор, Унагі, кунжут",weight:300,price:290,image:""},
- {id:"p3",name:"Зелений дракон ",category:"Роли",description:"Норі, Рис, Авокадо, Огірок, Вугор, Ікра тобіко червона, Ікра тобіко чорна",weight:300,price:290,image:""},
- {id:"p3",name:"Каліфорнія з лососем ",category:"Роли",description:"Норі, Рис, Авокадо, Огірок, Вугор, Ікра тобіко червона, Ікра тобіко чорна",weight:300,price:290,image:""},
- {id:"p3",name:"Рол з сніжним крабом ",category:"Роли",description:"Норі, Рис, Крем сир, Огірок, Спайсі, Крабові палички, Ікра тобіко червона",weight:300,price:290,image:""},
- {id:"p3",name:"Рол міцукі ",category:"Роли",description:"Норі, Рис, Крем сир, Чука, Горіховий соус, Креветка, Вугор",weight:300,price:290,image:""},
- {id:"p3",name:"Футу мак з вугрем",category:"Роли",description:"Норі, Рис, Чука, Вугор, Авокадо, Кунжут, Унагі",weight:300,price:290,image:""},
- {id:"p3",name:"Ебі макі ",category:"Роли",description:"Норі, Рис, Креветка",weight:300,price:290,image:""},
- {id:"p3",name:"Макі з вугрем",category:"Роли",description:"Рис, Норі, Вугор",weight:300,price:290,image:""},
- {id:"p3",name:"Фірмовий рол ",category:"Роли",description:"Норі, Рис, Крем сир, Апельсин, Ікра тобіко червона, Вугор, Унагі, Горіховий соус",weight:300,price:290,image:""},
- {id:"p3",name:"Рол окінава ",category:"Роли",description:"Норі, Рис, Лосось, Вугор, Унагі, Кунжут",weight:300,price:290,image:""},
- {id:"p3",name:"Рол Sushi mir",category:"Роли",description:"Норі, Рис, Крем сир, Лосось, Креветка, Ікра тобіко червона, Вугор, Чука, Унагі",weight:300,price:290,image:""},
- {id:"p3",name:"Рол асахі ",category:"Роли",description:"Норі, Рис, Крем сир, Креветка, Лосось, Унагі",weight:300,price:290,image:""},
- {id:"p4",name:"Сет",category:"Сети",description:"•рол Філадельфія з лососем, •рол з вугрем  •рол Філадельфія класік",weight:850,price:790,image:""},
- {id:"p5",name:"Сет драконів ",category:"Сети",description:"рол золотий дракон, •рол зелений дракон, •рол червоний дракон, •рол вогняний дракон.",weight:1200,price:1090,image:""},
- {id:"p5",name:"Сет королівський  ",category:"Сети",description:"•Філадельфія з лососем, •Каліфорнія з вугрем, •макі з огірком, •Філадельфія мікс",weight:1200,price:1090,image:""},
- {id:"p6",name:"Нігірі з лососем",category:"Роли",description:"Рис та скибочка свіжого лосося.",weight:70,price:95,image:""},
+ {id:"p1",name:"Філадельфія класік",category:"Роли",description:"Лосось, вершковий сир, огірок та ніжний рис.",weight:280,price:300,image:""},
+ {id:"p2",name:"Каліфорнія з лососем",category:"Роли",description:"Лосось, авокадо, огірок та ікра тобіко.",weight:260,price:270,image:""},
+ {id:"p3",name:"Запечений рол",category:"Роли",description:"Теплий рол із сирною шапочкою та соусом.",weight:300,price:290,image:""},
+ {id:"p4",name:"Сет Момент",category:"Сети",description:"Улюблені роли для затишного вечора вдвох.",weight:850,price:790,image:""},
+ {id:"p5",name:"Сет Sushi Mir",category:"Сети",description:"Різноманіття смаків для компанії друзів.",weight:1200,price:1090,image:""},
+ {id:"p6",name:"Нігірі з лососем",category:"Суші",description:"Рис та скибочка свіжого лосося.",weight:70,price:95,image:""},
+ {id:"p7",name:"Матча лимонад",category:"Напої",description:"Освіжаючий лимонад із легкою ноткою матча.",weight:330,price:85,image:""},
+ {id:"p8",name:"Імбирний чай",category:"Напої",description:"Ароматний чай з імбиром та цитрусом.",weight:400,price:75,image:""}
 ];
 
 const $ = s => document.querySelector(s);
@@ -120,6 +106,7 @@ $("#checkoutForm").addEventListener("submit",async e=>{
   phone:phoneValue,
   telegram:f.get("telegram").trim()||"Не вказано",
   fulfillment:f.get("fulfillment"),
+  orderTime:f.get("orderTime")||"Якомога швидше",
   comment:f.get("comment").trim()||"Немає",
   items,
   total:cartTotal()
@@ -131,6 +118,7 @@ $("#checkoutForm").addEventListener("submit",async e=>{
  text += `📞 <b>Телефон:</b> ${safe(order.phone)}\n`;
  text += `💬 <b>Telegram:</b> ${safe(order.telegram)}\n`;
  text += `📍 <b>Спосіб:</b> ${safe(order.fulfillment)}\n`;
+ text += `🕒 <b>Час:</b> ${safe(order.orderTime)}\n`;
  text += `📝 <b>Коментар:</b> ${safe(order.comment)}\n\n`;
  text += `🛒 <b>Склад замовлення:</b>\n`;
  order.items.forEach(i=>{
