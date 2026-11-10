@@ -1,0 +1,12 @@
+{
+  "name": "sushi-mir-netlify",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Sushi Mir storefront with shared Netlify Blobs catalog and existing Telegram order notifications",
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {
+    "@netlify/blobs": "^8.1.0"
+  }
+}
